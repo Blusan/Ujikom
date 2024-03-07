@@ -13,6 +13,17 @@
         <div class="card" style="margin-top: 1rem;">
             <div class="row">
                 <div class="col m-3 ">
+                    <?php 
+                    if(isset($_GET['IDbuku'])){
+                        $idbuku =$_GET['IDbuku'];
+                    }
+                    else{
+                        die("Error");
+                    }
+                    include '../config.php';
+                    $query = mysqli_query($conn, "SELECT * FROM buku WHERE IDbuku = '$idbuku' ");
+                    $result = mysqli_fetch_array($query);
+                    ?>
                     <h2>Isi Data Peminjaman</h2>
                     <form action="aksi/pinjam.php" method="post">
                     <div class="mb-3">
